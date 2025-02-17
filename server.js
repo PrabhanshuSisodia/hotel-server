@@ -4,6 +4,7 @@
 const express = require("express");
 const app = express();
 const db = require('./db')
+require('dotenv').config()
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json()) //req.body
@@ -11,6 +12,7 @@ app.use(bodyParser.json()) //req.body
 // const Person = require('./models/Person.js')
 // const MenuItem = require('./models/MenuItem.js')
 
+const PORT = process.env.PORT || 3000
 
 app.get("/", (req, res) => {
   res.send("Namaskar! Hamare Hotel Me Aapka Swagat Hai");
@@ -30,9 +32,8 @@ const menuItemRoutes = require('./routes/menuItemRouter.js')
 app.use("/menu", menuItemRoutes);
 
 
-
 // App Listen
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Server is live on port 3000");
     
 });
